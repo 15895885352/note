@@ -2,3 +2,4 @@
 在vivado自带打包工程为rar文件,复制到其他电脑上,解压之后直接导出到sdk,可能会出现找不到当前硬件platform，处理办法是重新全部走一遍生成bit文件.
 Error: ./Y1564_40G_emitnew/main/Y1564_rx.v(309): Illegal assignment to type 'reg[31:0]' from type 'reg[31:0] $[31:0]': Cannot assign an unpacked type to a packed type.
 请使用.sv文件格式
+cur_dly[j][31:0]和cur_dly[j][0:31]是不同的含义
