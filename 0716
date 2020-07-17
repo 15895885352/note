@@ -3,3 +3,4 @@
 Error: ./Y1564_40G_emitnew/main/Y1564_rx.v(309): Illegal assignment to type 'reg[31:0]' from type 'reg[31:0] $[31:0]': Cannot assign an unpacked type to a packed type.
 请使用.sv文件格式
 cur_dly[j][31:0]和cur_dly[j][0:31]是不同的含义
+有个地方cur_dly直接使用了整个数组作为条件所以报错
