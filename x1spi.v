@@ -2,14 +2,14 @@
 module xx (
 input           clk,
 input           rst,
-input           start,//Âö³å£¬±íÊ¾²ÎÊıÓĞĞ§
-output          finish,//Âö³å£¬±íÊ¾data_in[7:0]ÓĞĞ§
-input [ 7:0]    cmd,//ÃüÁîÄÚÈİ
-input [23:0]    addr,//µØÖ·£¬Ä¬ÈÏÊÇÎŞĞ§µØÖ·24'b0,
-input [ 2:0]    dummy_num,//¿ÕÏĞ×Ö½Ú¸öÊı£¬ÀıÈç£º1£º¿ÕÏĞ1B
-output[ 7:0]    data_in,//Êı¾İÊäÈë
-
-//x1 spi ½Ó¿ÚĞÅºÅ,
+input           start,//è„‰å†²ï¼Œè¡¨ç¤ºå‚æ•°æœ‰æ•ˆ
+output          finish,//è„‰å†²ï¼Œè¡¨ç¤ºdata_in[7:0]æœ‰æ•ˆ
+input [ 7:0]    cmd,//å‘½ä»¤å†…å®¹
+input [23:0]    addr,//åœ°å€ï¼Œé»˜è®¤æ˜¯æ— æ•ˆåœ°å€24'b0,
+input [ 2:0]    dummy_num,//ç©ºé—²å­—èŠ‚ä¸ªæ•°ï¼Œä¾‹å¦‚ï¼š1ï¼šç©ºé—²1B
+output[ 7:0]    data_in,//æ•°æ®è¾“å…¥
+input           exist_rx_data,//å­˜åœ¨è¾“å…¥çš„æ•°æ®
+//x1 spi æ¥å£ä¿¡å·,
 input           data_in,
 output          sclk,
 output          cs_n,
@@ -29,11 +29,20 @@ reg [ 2:0] dummy_num_reg;
 assign  {sclk,cs_n,data_out} = {sclk_reg,cs_n_reg,data_out_reg};
 always@(posedge clk or posedge rst) begin 
     if(rst)  {start_reg,finish_reg,cmd_reg,addr_reg,dummy_num_reg} <= {1'b0,1'b0,8'b0,24'b0,3'b0};
-    else if()     {start_reg,finish_reg,cmd_reg,addr_reg,dummy_num_reg} <= {start,finish,cmd,addr,dummy_num};
+    else if(start)     {start_reg,finish_reg,cmd_reg,addr_reg,dummy_num_reg} <= {start,finish,cmd,addr,dummy_num};//åªåœ¨startæ›´æ–°ï¼Œé˜²æ­¢ä¸­é€”å˜åŒ–
 end
 
-wire exist_addr = addr_reg[23:0]!=24'b0;//µØÖ·²»Îª0£¬±íÊ¾µØÖ·ÓĞĞ§
+wire exist_addr = addr_reg[23:0]!=24'b0;//åœ°å€ä¸ä¸º0ï¼Œè¡¨ç¤ºåœ°å€æœ‰æ•ˆ
+wire exist_dummy = dummy_num_reg[2:0]!=3'b0;//dummy_num_regä¸ä¸º0
 
+wire send_cmd_sop;
+wire send_cmd_eop;
+wire send_addr_sop;
+wire send_addr_eop;
+wire send_dumy_sop;
+wire send_dumy_eop;
+wire rx_data_sop;
+wire rx_data_eop;
 
 
 
