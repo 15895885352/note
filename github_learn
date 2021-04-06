@@ -1,0 +1,92 @@
+	
+#链接：https://blog.csdn.net/qq_37512323/article/details/80693445
+
+step1: 确定秘钥SSH 
+	$ ssh-keygen-t rsa-C "1615549892@qq.com"
+	$ cd /c/Users/gaop/.ssh/
+	$ cat id_rsa.pub 															//打印
+		ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC3eruUFtcCykLcSzcVHGSzxDpk9e7GZfLEcsMGJi6vvDTqMV0XwShy5CGo2rLgX5bVmhGIprMzz4leJZZmi+VfrhezfnnzkfGtkCbgtAk2FlgAiRYXVdJRbVzXbZoLR/7A18EYh4oO14/6vbpkmNd3rNL1h+ogMnhTyYmQo84Zoq8LmMchJUqi59ENp+5QYXQZ4P7AxGD5cAoknPm8Bh8aUp+ewgC1LgZEKg+oQsQ/ocqrcRPi42kvNc6cIhsCWxFgJG5mq9g5pfpqqqh8GR512TDtU0Elew8ChLdeEl03euNbVw7hwVXKgvD84tXrcDSm7aCASM8he4jzVNHRZ41qbq97pTz41wbFlGWHtIYs4PEpC8wuKhruOD0WdXLWylNHYcA5u2FxYSDaj/BOu2i1rKhXZ4pUJkNYhCfKfvv5bBmPa9VVzpgA352R0253+AeZiLPk7lBN7Ab1EYSEurk14NpLS6eP/by9sd2/AcDIA1hQtzWjO+HlCamERoape7E= 1615549892@qq.com
+
+step2: 确定连接上了
+	$ ssh -T git@github.com
+		Hi 15895885352! You've successfully authenticated, but GitHub does not provide shell access.
+
+step3: 添加本人信息
+	$ git config --global user.name "15895885352"
+	$ git config --global user.email "1615549892@qq.com"
+
+step4： 克隆
+	$ cd /c/WUXF/git/                                                    //进入你要复制的文件夹
+	$ git clone https://github.com/15895885352/test111.git                  //克隆
+	
+step5: 新建文件 & push
+	$ touch a.v             											//新建一个文件“a.v”
+	$ git add a.v
+	$ git status
+		On branch main
+		Your branch is up to date with 'origin/main'.
+
+		Changes to be committed:
+			(use "git restore --staged <file>..." to unstage)
+			new file:   a.v                                             //提示你有一个新文件，等待push
+	$ git commit -m "a.v"
+			[main 681a1f9] a.v
+			1 file changed, 0 insertions(+), 0 deletions(-)
+			create mode 100644 a.v
+
+	$ git push
+		Logon failed, use ctrl+c to cancel basic credential prompt.
+		Enumerating objects: 4, done.
+		Counting objects: 100% (4/4), done.
+		Delta compression using up to 16 threads
+		Compressing objects: 100% (2/2), done.
+		Writing objects: 100% (3/3), 259 bytes | 259.00 KiB/s, done.
+		Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+		To https://github.com/15895885352/wuxf.git
+		4e4f906..681a1f9  main -> main
+
+		
+		
+		
+		
+		git@github.com:15895885352/gittest.git
+		
+		
+		git branch --set-upstream-to=origin/git@github.com:15895885352/gittest.git
+
+		
+1 echo # repository name>> README.md
+2 git init
+3 git add README.md
+4 git commit -m "first commit"
+5 git remote add origin git@github.com:15895885352/gittest.git
+6 git push -u origin master
+
+
+
+
+1.使用当前目录作为Git仓库，我们只需使它初始化。
+git init
+2.在当前目录新建newrepo目录作为Git仓库。
+git init newrepo
+3.添加文件到暂存器 
+git add 1.v
+4.将暂存区文件提交到head区
+git commit -m "初始化项目版本"
+5.建立本地仓库和远程仓库的链接
+git remote add origin git@github.com:15895885352/gittest.git
+6.上传本地head到远程仓库
+git pull git@github.com:15895885352/gittest.git
+
+git@github.com:15895885352/gittest.git
+git clone  git@github.com:15895885352/gittest.git
+
+
+
+
+
+
+
+
+
+
